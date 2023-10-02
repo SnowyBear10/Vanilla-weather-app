@@ -20,6 +20,9 @@ li {
   margin: 0;
   padding: 0;
   color: black;
+}
+
+li::first-letter {
   text-transform: capitalize;
 }
 
