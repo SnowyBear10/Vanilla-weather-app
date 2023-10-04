@@ -21,6 +21,34 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Wed", "Thurs", "Fri", "Sat", "Sun"];
+
+  let forecastHtml = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+              <div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                <img
+                  src="https://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="38"
+                />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max">62°</span>
+                  <span class="weather-forecast-temperature-min"> 48°</span>
+                </div>
+              </div>
+            `;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -87,3 +115,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("Bellingham");
+displayForecast();
