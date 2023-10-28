@@ -131,10 +131,8 @@ function displayFahrenheitTemperature(event) {
 }
 
 function getCurrentLocationWeather(event) {
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#city").innerHTML = response.data.name;
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
 function retrievePosition(position) {
@@ -144,10 +142,8 @@ function retrievePosition(position) {
   let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(getCurrentLocationWeather);
+  axios.get(apiUrl).then(displayTemperature);
 }
-
-navigator.geolocation.getCurrentPosition(retrievePosition);
 
 let fahrenheitTemperature = null;
 
