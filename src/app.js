@@ -130,6 +130,27 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
+function getCurrentLocationWeather(event) {
+  getCurrentLocationWeather.addEventListener("click", function(event) {event.preventDefault()};
+  navigator.geolocation.retrievePosition()});
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#city").innerHTML = response.data.name;
+}
+
+function retrievePosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "imperial";
+  let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getCurrentLocationWeather);
+}
+
+navigator.geolocation.getCurrentPosition(retrievePosition);
+
 let fahrenheitTemperature = null;
 
 let form = document.querySelector("#search-form");

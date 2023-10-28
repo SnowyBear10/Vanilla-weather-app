@@ -44,11 +44,21 @@ li::first-letter {
 
 .weather-temperature {
   flex-wrap: nowrap;
-  position: relative;
   margin: 10px 0;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
 }
 
-.temperature-units .active {
+.units {
+  position: relative;
+  right: 0;
+  top: 4px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.units .active {
   color: black;
   cursor: default;
   text-decoration: none;
