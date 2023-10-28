@@ -131,8 +131,6 @@ function displayFahrenheitTemperature(event) {
 }
 
 function getCurrentLocationWeather(event) {
-  getCurrentLocationWeather.addEventListener("click", function(event) {event.preventDefault()};
-  navigator.geolocation.retrievePosition()});
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -161,5 +159,8 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocationWeather);
 
 search("Bellingham");
