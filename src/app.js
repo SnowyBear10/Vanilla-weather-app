@@ -84,6 +84,8 @@ function displayTemperature(response) {
   let iconElement = document.querySelector("#current-weather-icon");
 
   fahrenheitTemperature = response.data.main.temp;
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
